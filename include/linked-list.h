@@ -8,27 +8,30 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-typedef struct Node_t {
-    int data;
-    struct Node_t *next;
-} Node;
+typedef struct linked_list_t linked_list;
 
-Node* createNode(int data, Node *next);
+linked_list *list_create_default();
 
-void appendBack(Node **head, int data);
+void list_push_back(linked_list *list, int data);
 
-void appendFront(Node **head, int data);
+void list_push_front(linked_list *list, int data);
 
-bool removeLast(Node **head);
+int list_pop_back(linked_list *list);
 
-bool removeFirst(Node **head);
+int list_pop_front(linked_list *list);
 
-bool removeAt(Node **head, size_t index);
+int list_get_at(linked_list *list, size_t index);
 
-bool appendAt(Node **head, size_t index, int data);
+bool list_remove_at(linked_list *list, size_t index);
 
-size_t list_size(Node *head);
+bool list_insert(linked_list *list, size_t index, int data);
 
-void list_print(Node *head);
+void list_print(linked_list *list);
+
+size_t list_size(linked_list *list);
+
+bool list_is_empty(linked_list *list);
+
+void list_dealloc(linked_list *list);
 
 #endif //LINKED_LIST_H
