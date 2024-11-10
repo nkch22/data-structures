@@ -13,19 +13,19 @@ struct dynamic_arr_t {
     size_t capacity;
 };
 
-dynamic_arr dynamic_arr_create_default() {
-    dynamic_arr ret;
-    ret.capacity = 7;
-    ret.data = malloc(sizeof(ret.data) * ret.capacity);
-    ret.size = 0;
+dynamic_arr *dynamic_arr_create_default() {
+    dynamic_arr *ret = malloc(sizeof *ret);
+    ret->capacity = 7;
+    ret->data = malloc(sizeof(ret->data) * ret->capacity);
+    ret->size = 0;
     return ret;
 }
 
-dynamic_arr dynamic_arr_create_with_capacity(size_t capacity) {
-    dynamic_arr ret;
-    ret.capacity = capacity;
-    ret.data = malloc(sizeof(ret.data) * ret.capacity);
-    ret.size = 0;
+dynamic_arr *dynamic_arr_create_with_capacity(size_t capacity) {
+    dynamic_arr *ret = malloc(sizeof *ret);
+    ret->capacity = capacity;
+    ret->data = malloc(sizeof(ret->data) * ret->capacity);
+    ret->size = 0;
     return ret;
 }
 
@@ -74,6 +74,7 @@ void dynamic_arr_dealloc(dynamic_arr *arr) {
     free(arr->data);
     arr->capacity = 0;
     arr->size = 0;
+    free(arr);
 }
 
 void dynamic_arr_print(dynamic_arr *arr) {

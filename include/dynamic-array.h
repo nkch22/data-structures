@@ -10,9 +10,9 @@
 
 typedef struct dynamic_arr_t dynamic_arr;
 
-dynamic_arr dynamic_arr_create_default();
+dynamic_arr *dynamic_arr_create_default();
 
-dynamic_arr dynamic_arr_create_with_capacity(size_t capacity);
+dynamic_arr *dynamic_arr_create_with_capacity(size_t capacity);
 
 bool dynamic_arr_push(dynamic_arr *arr, int item);
 
