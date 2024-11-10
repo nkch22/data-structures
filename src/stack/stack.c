@@ -14,19 +14,19 @@ struct stack_t {
     size_t capacity;
 };
 
-stack stack_create_default() {
-    stack ret;
-    ret.capacity = 7;
-    ret.data = malloc(sizeof(ret.data) * ret.capacity);
-    ret.size = 0;
+stack *stack_create_default() {
+    stack *ret = malloc(sizeof *ret);
+    ret->capacity = 7;
+    ret->data = malloc(sizeof(ret->data) * ret->capacity);
+    ret->size = 0;
     return ret;
 }
 
-stack stack_create_with_capacity(size_t capacity) {
-    stack ret;
-    ret.capacity = capacity;
-    ret.data = malloc(sizeof(ret.data) * ret.capacity);
-    ret.size = 0;
+stack *stack_create_with_capacity(size_t capacity) {
+    stack *ret = malloc(sizeof *ret);
+    ret->capacity = capacity;
+    ret->data = malloc(sizeof(ret->data) * ret->capacity);
+    ret->size = 0;
     return ret;
 }
 
@@ -56,6 +56,7 @@ void stack_dealloc(stack *stack) {
     free(stack->data);
     stack->capacity = 0;
     stack->size = 0;
+    free(stack);
 }
 
 void stack_print(stack *stack) {

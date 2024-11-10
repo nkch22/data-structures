@@ -9,9 +9,9 @@
 
 typedef struct stack_t stack;
 
-stack stack_create_default();
+stack *stack_create_default();
 
-stack stack_create_with_capacity(size_t capacity);
+stack *stack_create_with_capacity(size_t capacity);
 
 bool stack_push(stack *stack, int item);
 
